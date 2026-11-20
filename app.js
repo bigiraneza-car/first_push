@@ -48,9 +48,24 @@ function render(list) {
         const repo =document.createElement('p');
         repo.className = 'repo';
         repo.textContent = issue.repository_url.split('/').slice(-2).join('/');
-        
 
+        //5. one chip per label
+        const chips = document.createElement('div');
+        issue.labels.forEach(label => {
+            const chip = doccument.createElement('span');
+            chip.className = 'chip';
+            chip.textContent = label.name;
+            chips.appendChild(chip);
+        });
 
+        //6. Comments + age
+        const meta = document.createElement('p');
+        meta.className = 'meta';
+        meta.textContent = `${issue.comments}, opened ${timeAgo(issue.created_at)}`;
 
-    })
+        //7.Put the pieces in the card, and the card on the page
+        card.append(link, repo, chips, meta);
+        box.appendChild(card);
+
+    });
 }
