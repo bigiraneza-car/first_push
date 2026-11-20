@@ -3,7 +3,7 @@ let items = [];
 function buildUrl(){
     const lang = document.getElementById('lang').value;
     const label = document.getElementById('label').value;
-    const keyw = document.getElementById('Keyword').value.trim().replace(/[:"]/g, '');
+    const keyw = document.getElementById('keyword').value.trim().replace(/[:"]/g, '');
     const q = `label:"${label}" language:${lang} is:issue is:open no:assignee ${keyw}`;
     return 'https://api.github.com/search/issues?q=' + encodeURIComponent(q) + '&sort=created&order=desc&per_page=30';
 }
@@ -52,7 +52,7 @@ function render(list) {
         //5. one chip per label
         const chips = document.createElement('div');
         issue.labels.forEach(label => {
-            const chip = doccument.createElement('span');
+            const chip = document.createElement('span');
             chip.className = 'chip';
             chip.textContent = label.name;
             chips.appendChild(chip);
