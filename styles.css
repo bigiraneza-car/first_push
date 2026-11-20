@@ -48,11 +48,27 @@ header h1 {
     margin-bottom: 12px;
 }
 .card:hover { border-color: #587a6f}
-
+.card a {
+    color: #d2e4f3;
+    font-weight: 600;
+}
+card p { margin: 6px 0; }
 .chip {
     border-radius: 99px;
+    padding: 2px 10px;
+    margin: 0 6px 6px 0;
+    background: rgba(79, 209, 165, 0.15);
+    color: #ebeac4;
+    font-size: 0.8rem;
 }
-
+.meta { 
+    color:#9aa4b2;
+    font-size: 0.85rem;
+}
+repo {
+    color: #9aa4b2;
+    font-size: 0.9rem;
+}
 footer {
     color: #9aa4b2;
     font-size: 0.85rem;
