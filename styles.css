@@ -1,0 +1,14 @@
+body {
+    margin:auto;
+    max-width:900px;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color:rgb(224, 212, 198);
+}
+
+.card {
+    border: radius 5px;
+    padding: auto;
+    margin:auto;
+}
