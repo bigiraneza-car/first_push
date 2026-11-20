@@ -5,10 +5,19 @@ body {
     flex-wrap: wrap;
     gap: 8px;
     color:rgb(224, 212, 198);
+    background-image:url(2\ ·\ Circuit\ Grid.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: darken;
 }
 
 .card {
     border: radius 5px;
     padding: auto;
     margin:auto;
+}
+
+.chip {
+    border-radius: 99px;
 }
