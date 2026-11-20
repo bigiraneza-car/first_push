@@ -69,3 +69,14 @@ function render(list) {
 
     });
 }
+
+//search function
+async function search() {
+    setStatus('Loading...');
+    items = await getIssues(buildUrl());
+    render(items);
+    setStatus(`Found ${items.length} issues`);   
+}
+
+document.get elementById('searchbtn').addEventListener('click', search);
+search();
