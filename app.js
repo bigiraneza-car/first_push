@@ -78,5 +78,5 @@ async function search() {
     setStatus(`Found ${items.length} issues`);   
 }
 
-document.get elementById('searchbtn').addEventListener('click', search);
+document.getElementById('searchbtn').addEventListener('click', search);
 search();
