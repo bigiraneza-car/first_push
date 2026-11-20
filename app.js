@@ -79,4 +79,13 @@ async function search() {
 }
 
 document.getElementById('searchbtn').addEventListener('click', search);
+
+
+function applyView() {
+    let list = items;
+
+    //Filter 1: only issues with no comments
+    
+}
+
 search();
