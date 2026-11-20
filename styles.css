@@ -30,14 +30,36 @@ header h1 {
 #controls select, 
 #controls input[type='text'], #controls input:not([type]) {
     padding: 8px 10px;
+    border: 1px solid #3a4250;
+    border-radius: 6px;
+    background: #161b22;
+    color: inherit;
 } 
-.card {
-    border: 1px solid;
-    border-radius: 8px;
-    padding: 16px;
-    margin:auto;
+
+#status {
+    color: #9aa4b2;
+    font-size: 0.9rem;
 }
+.card {
+    background: rgba(22, 27, 34, 0.9);
+    border: 1px solid #2d333b;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+}
+.card:hover { border-color: #587a6f}
 
 .chip {
     border-radius: 99px;
+}
+
+footer {
+    color: #9aa4b2;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    #controls > * { flex: 1 1 100%;}
+    header h1 { font-size: 1.6rem;}
 }
