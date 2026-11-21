@@ -117,5 +117,12 @@ async function search() {
 }
 document.getElementById('searchbtn').addEventListener('click', search);
 
-//
-search();
+// re-filter instantly when the user changes a filter or the sort
+document.getElementById('noComments').addEventListener('change', applyView);
+document.getElementById('sort').addEventListener('change', applyView);
+document.getElementById('repoFilter').addEventListener('input', applyView);
+
+//press Enter key in the keyword box to search
+document.getElementById('keyword').addEventListener('keydown', e => {
+    if (e.key === 'Enter') search();
+});
