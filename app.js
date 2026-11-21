@@ -98,9 +98,12 @@ function applyView() {
     //sort
     const sortBy = document.getElementById('sort').value;
     list = [...list].sort((a, b) => {
-        if (sortBy === 'newest') return new Date(b.created_at) - new DataTransfer(a.created_at;);
-        
-    })
+        if (sortBy === 'newest') return new Date(b.created_at) - new Date(a.created_at);
+        if (sortBy === 'oldest') return new Date(a.created_at) - new Date(b.created_at);
+        if (sortBy === 'most') return b.comments - a.comments;
+        retunr a.comments - b.comments;   //fewest
+
+    });
 }
 
 search();
