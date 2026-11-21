@@ -91,8 +91,16 @@ function applyView() {
 
     //Filter 2: repo name contains the typed text
     const repoText = document.getElementById('repoFilter').value.trim().toLowerCase();
-    
+    if (repoText) {
+        list = list.filter(issue => issue.repository_url.toLowerCase().includes(repoText));
+    }
 
+    //sort
+    const sortBy = document.getElementById('sort').value;
+    list = [...list].sort((a, b) => {
+        if (sortBy === 'newest') return new Date(b.created_at) - new DataTransfer(a.created_at;);
+        
+    })
 }
 
 search();
