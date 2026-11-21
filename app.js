@@ -1,4 +1,5 @@
 let items = [];
+let fromCache = false;
 //function to get the input 'the language", etc for API 
 function buildUrl(){
     const lang = document.getElementById('lang').value;
@@ -104,6 +105,15 @@ function applyView() {
         return a.comments - b.comments;   //fewest
 
     });
+
+    render (list);
+
+    if (list.length === 0) {
+        setStatus('No issues match your filters.');
+
+    } else {
+        setStatus(`Showing ${list.length} of ${items.length} issues` + (fromCache ? 'loaded from cache' : ''));
+    }
 }
 
 search();
