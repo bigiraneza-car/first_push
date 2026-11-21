@@ -9,8 +9,26 @@ function buildUrl(){
     return 'https://api.github.com/search/issues?q=' + encodeURIComponent(q) + '&sort=created&order=desc&per_page=30';
 }
 
+//error handling
 async function getIssues(url) {
-    const res = await fetch(url);
+    //stop waiting after 8 seconds
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+
+    try {
+        const res = await fetch(url, { signal: controller.signal});
+
+        //403 / 429 = Github rate limit (10 searches per minute without a key)
+        if (res.status === 403 || res.status === 429) {
+            const reset = Number(res.headers.get('x-ratelimit-reset'));
+            const wait = reset ? Math.max(1, Math.ceil(reset -Date.now() / 1000)) :60;
+            throw new Error(`Github's free limit was reached. Try again in ${wait} s.`);
+        }
+
+        //422 = Githun couldn't understand the search
+        
+    }
+    
     const data = await res.json();
     return data.items;
 }
