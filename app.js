@@ -101,7 +101,7 @@ function applyView() {
         if (sortBy === 'newest') return new Date(b.created_at) - new Date(a.created_at);
         if (sortBy === 'oldest') return new Date(a.created_at) - new Date(b.created_at);
         if (sortBy === 'most') return b.comments - a.comments;
-        retunr a.comments - b.comments;   //fewest
+        return a.comments - b.comments;   //fewest
 
     });
 }
