@@ -139,8 +139,28 @@ function applyView() {
 //search function
 async function search() {
     setStatus('Loading...');
-    items = await getIssues(buildUrl());
-    applyView();
+    document.getElementById('results').innerHTML = '';
+
+    try {
+        items = await getIssues(buildUrl());
+
+        if (items.lenght === 0) {
+            setStatus('No issues found. Try another language, label or keyword.')
+            return;
+        }
+        applyView();
+
+    } catch (e) {
+        items = [];
+        if (e.name === 'AbortError') {
+            setStatus('No issues found. Try another language, label or keyword.');
+            return;
+        } else if (e instanceof TypeError) {
+            setStatus('Network problem. Check your internet connection.')
+        } else {
+            setStatus(e.message);     //our own messages from getIssues
+        }
+    }
 }
 document.getElementById('searchbtn').addEventListener('click', search);
 
