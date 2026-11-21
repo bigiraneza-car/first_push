@@ -71,14 +71,8 @@ function render(list) {
     });
 }
 
-//search function
-async function search() {
-    setStatus('Loading...');
-    items = await getIssues(buildUrl());
-    applyView();  
-}
 
-document.getElementById('searchbtn').addEventListener('click', search);
+
 
 
 function applyView() {
@@ -115,4 +109,13 @@ function applyView() {
     }
 }
 
+//search function
+async function search() {
+    setStatus('Loading...');
+    items = await getIssues(buildUrl());
+    applyView();
+}
+document.getElementById('searchbtn').addEventListener('click', search);
+
+//
 search();
