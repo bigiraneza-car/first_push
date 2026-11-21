@@ -85,7 +85,14 @@ function applyView() {
     let list = items;
 
     //Filter 1: only issues with no comments
+    if (document.getElementById('noComments').checked) {
+        list = list.filter(issue => issue.comments === 0);
+    }
+
+    //Filter 2: repo name contains the typed text
+    const repoText = document.getElementById('repoFilter').value.trim().toLowerCase();
     
+
 }
 
 search();
