@@ -9,6 +9,18 @@ function buildUrl(){
     return 'https://api.github.com/search/issues?q=' + encodeURIComponent(q) + '&sort=created&order=desc&per_page=30';
 }
 
+//bonus
+//read from cache; returns null if missing or older
+function getCached(key, maxAge = 600000) {
+    try {
+        const saved = JSON.parse(localStorage.getItem(key));
+        if (saved && Date.now() - saved.time < maxAge) return saved.data;
+    } catch (e) {}
+    return null;
+}
+
+// save to cache with the current time
+function setCached()
 //error handling
 async function getIssues(url) {
     //stop waiting after 8 seconds
