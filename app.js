@@ -26,11 +26,20 @@ async function getIssues(url) {
         }
 
         //422 = Githun couldn't understand the search
-        
-    }
+        if (res.status === 422) {
+            throw new Error('Github could not understand that search. Try a simpler keyword.');
+        }
+
+        //any other problem
+        if (!res.ok) {
+            throw new Error(`Github error (${res.status}). Please try again`);
+        }
     
-    const data = await res.json();
-    return data.items;
+        const data = await res.json();
+        return data.items;
+    } finally {
+        clearTimeout(timer);      //always cancel the 8-second timer
+    }
 }
 
 function setStatus(text) {
