@@ -75,8 +75,7 @@ function render(list) {
 async function search() {
     setStatus('Loading...');
     items = await getIssues(buildUrl());
-    render(items);
-    setStatus(`Found ${items.length} issues`);   
+    applyView();  
 }
 
 document.getElementById('searchbtn').addEventListener('click', search);
