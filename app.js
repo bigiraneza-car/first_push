@@ -20,9 +20,22 @@ function getCached(key, maxAge = 600000) {
 }
 
 // save to cache with the current time
-function setCached()
+function setCached(key, data) {
+    try {
+        localStorage.setItem(key, JSON.stringify({ time: Date.now(), data}));
+    } catch (e) {}
+}
+
+
 //error handling
 async function getIssues(url) {
+    const cached = getCached(url);
+    if (cached) {
+        fromCache = true;
+        return cached;  //ship Github completely
+    }
+    fromCache = false;
+
     //stop waiting after 8 seconds
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 8000);
@@ -48,6 +61,7 @@ async function getIssues(url) {
         }
     
         const data = await res.json();
+        setCached(url, data.items);
         return data.items;
     } finally {
         clearTimeout(timer);      //always cancel the 8-second timer
@@ -144,7 +158,7 @@ function applyView() {
         setStatus('No issues match your filters.');
 
     } else {
-        setStatus(`Showing ${list.length} of ${items.length} issues` + (fromCache ? 'loaded from cache' : ''));
+        setStatus(`Showing ${list.length} of ${items.length} issues ` + (fromCache ? '!!! loaded from cache' : ''));
     }
 }
 
