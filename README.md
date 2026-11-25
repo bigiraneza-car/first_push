@@ -3,7 +3,7 @@
 
 **Find beginner-friendly open-source issues in your language, filtered and sorted so you can make your first contribution today. **
 - **Live app:** https://www.bigiraneza.tech
-- **Demo Video:**
+- **Demo Video:** https://youtu.be/-7m6pxuLYJ8
 
 ## The problem
 
